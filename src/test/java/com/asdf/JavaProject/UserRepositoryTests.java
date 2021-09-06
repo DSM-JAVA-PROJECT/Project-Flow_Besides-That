@@ -21,28 +21,28 @@ public class UserRepositoryTests {
     @Autowired
     private TestEntityManager entityManager;
 
-    @Test
-    public void testCreateUser(){
-        User user = User.builder()
-                .email("test@test.com")
-                .name("wrea")
-                .password("adsf")
-                .phoneNumber("010-1234-1234")
-                .build();
-
-        User savedUser = repo.save(user);
-
-        User existUser = entityManager.find(User.class, savedUser.getId());
-
-        assertThat(existUser.getEmail()).isEqualTo(user.getEmail());
-    }
-
-    @Test
-    public void testFindUserByEmail(){
-        String email = "test@test.com";
-
-        User user = repo.findByEmail(email).orElseThrow();
-
-        assertThat(user).isNotNull();
-    }
+//    @Test
+//    public void testCreateUser(){
+//        User user = User.builder()
+//                .email("test@test.com")
+//                .name("wrea")
+//                .password("adsf")
+//                .phoneNumber("010-1234-1234")
+//                .build();
+//
+//        User savedUser = repo.save(user);
+//
+//        User existUser = entityManager.find(User.class, savedUser.getId());
+//
+//        assertThat(existUser.getEmail()).isEqualTo(user.getEmail());
+//    }
+//
+//    @Test
+//    public void testFindUserByEmail(){
+//        String email = "test@test.com";
+//
+//        User user = repo.findByEmail(email).orElseThrow();
+//
+//        assertThat(user).isNotNull();
+//    }
 }
