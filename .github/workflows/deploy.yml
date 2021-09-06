@@ -42,7 +42,7 @@ jobs:
         run: zip -qq -r ./$GITHUB_SHA.zip .
         shell: bash
 
-      - name: Configure AWS credentials
+      - name: Configure AWS credentials ${{ secrets.AWS_ACCESS_KEY_ID }}
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
