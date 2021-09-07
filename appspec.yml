@@ -3,11 +3,11 @@ os: linux
 
 files:
   - source: /
-    destination: /opt/JavaProject
+    destination: /home/ec2-user
 permissions:
-  - object: /opt/JavaProject/
-    owner: ubuntu
-    group: ubuntu
+  - object: /home/ec2-user
+    owner: ec2-user
+    group: ec2-user
     mode: 755
 hooks:
   AfterInstall:
