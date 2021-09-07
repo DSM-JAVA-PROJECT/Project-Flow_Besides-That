@@ -22,11 +22,11 @@ import java.util.Random;
 @RequiredArgsConstructor
 public class EmailService {
 
-    @Autowired
-    private VerifyCodeRedisRepository verifyCodeRedisRepository;
 
-    @Autowired
-    private VerifyUserRedisRepository verifyUserRedisRepository;
+    private final VerifyCodeRedisRepository verifyCodeRedisRepository;
+
+
+    private final VerifyUserRedisRepository verifyUserRedisRepository;
 
     private final JavaMailSender emailSender;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -76,10 +76,10 @@ public class EmailService {
     }
 
     public String verifyCode(String code) throws Exception {
-        VerifyCode verifyCode = verifyCodeRedisRepository.findByCode(code).get();
+        VerifyCode verifyCode = verifyCodeRedisRepository.findByCode(code).orElseThrow();
 
         if(!verifyCode.getCode().equals(code)){
-            new Exception("인증번호가 다릅니다.");
+           throw new Exception("인증번호가 다릅니다.");
         }
 
         VerifyUser verifyUser = new VerifyUser(verifyCode.getEmail());
