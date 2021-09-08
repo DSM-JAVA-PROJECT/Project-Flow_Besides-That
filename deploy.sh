@@ -14,6 +14,9 @@ JP_SECRET_KEY=$(env | grep JP_SECRET_KEY)
 
 CURRENT_PID=$(pgrep -f $APP_NAME)
 
+echo "$smtp_class" >> deploy.log
+echo  "$Email_ID" >> deploy.log
+
 if [ -z $CURRENT_PID ]
 then
   echo "> 종료할것 없음." >> deploy.log
