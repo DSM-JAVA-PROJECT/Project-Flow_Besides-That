@@ -6,6 +6,11 @@ cd $REPOSITORY
 APP_NAME=action_codedeploy
 JAR_NAME=$(ls $REPOSITORY/build/libs/ | grep '.jar' | tail -n 1)
 JAR_PATH=$REPOSITORY/build/libs/$JAR_NAME
+smtp_class=${ env | grep smtp_class}
+Email_ID=${ env | grep Email_ID}
+Email_PWD=${ env | grep Email_PWD }
+MongoDB=${ env | grep MongoDB }
+JP_SECRET_KEY=${ env | grep JP_SECRET_KEY}
 
 CURRENT_PID=$(pgrep -f $APP_NAME)
 
