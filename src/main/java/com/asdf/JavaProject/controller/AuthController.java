@@ -43,7 +43,7 @@ public class AuthController {
     @GetMapping("/myPage")
     public ResponseEntity<Object> myPage(@RequestHeader Map<String, String> header){
         try{
-            return new ResponseEntity(authService.myPage(header.get("authorization").substring(7)), HttpStatus.OK);
+            return new ResponseEntity<>(authService.myPage(header.get("authorization").substring(7)), HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
