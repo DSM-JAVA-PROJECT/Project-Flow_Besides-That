@@ -9,12 +9,6 @@ JAR_PATH=$REPOSITORY/build/libs/$JAR_NAME
 
 source $REPOSITORY/codedeploy.sh
 
-smtp_class=$(env | grep smtp_class)
-Email_ID=$(env | grep Email_ID)
-Email_PWD=$(env | grep Email_PWD)
-MongoDB=$(env | grep MongoDB)
-JP_SECRET_KEY=$(env | grep JP_SECRET_KEY)
-
 echo "> $smtp_class" >> deploy.log
 echo "> $Email_ID" >> deploy.log
 
