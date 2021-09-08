@@ -1,7 +1,5 @@
 package com.asdf.JavaProject.config;
 
-import antlr.Token;
-import com.asdf.JavaProject.config.user.CustomUserDetails;
 import com.asdf.JavaProject.config.user.CustomUserDetailsService;
 import com.asdf.JavaProject.dto.TokenContent;
 import com.asdf.JavaProject.entity.user.User;
@@ -9,16 +7,9 @@ import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpServletRequest;
 import java.time.Duration;
-import java.util.Arrays;
-import java.util.Base64;
 import java.util.Date;
 
 @Component
@@ -34,7 +25,7 @@ public class JwtToken {
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 
-    public String createToken(User user){
+    public String createToken(User user) {
         Date now = new Date();
 
         return Jwts.builder()
@@ -49,7 +40,7 @@ public class JwtToken {
 
     }
 
-    public String createRefreshToken(User user){
+    public String createRefreshToken(User user) {
         Date now = new Date();
 
         return Jwts.builder()
@@ -64,8 +55,8 @@ public class JwtToken {
     }
 
 
-    public TokenContent decodeToken(String token){
-        Jws<Claims> claims =  Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
+    public TokenContent decodeToken(String token) {
+        Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
 
         TokenContent tokenContent = new TokenContent(String.valueOf(claims.getBody().get("id")), String.valueOf(claims.getBody().get("email")));
 

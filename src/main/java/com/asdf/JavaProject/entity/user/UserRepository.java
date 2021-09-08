@@ -1,7 +1,5 @@
 package com.asdf.JavaProject.entity.user;
 
-import org.bson.types.ObjectId;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;
